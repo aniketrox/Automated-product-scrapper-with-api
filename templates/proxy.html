@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Proxy Setup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            outline: none;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .remove-button {
+            background-color: #ff6347;
+        }
+
+        .remove-button:hover {
+            background-color: #ff4136;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>HTTP Proxy Setup</h2>
+        <h3>Add Proxy</h3>
+        <form id="proxySetupForm" action="/proxy" method="post">
+            <div class="input-container">
+                <label for="ipRoot">IP/Root:</label>
+                <input type="text" id="ipRoot" name="ipRoot" placeholder="Enter IP or Root" required>
+            </div>
+            <div class="input-container">
+                <label for="port">port:</label>
+                <input type="text" id="port" name="port" placeholder="Enter port" required>
+            </div>
+            <div class="input-container">
+                <label for="userid">UserID:</label>
+                <input type="text" id="userid" name="userid" placeholder="Enter UserID" required>
+            </div>
+            <div class="input-container">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <button type="submit">Add Proxy</button>
+        </form>
+        <h3>Proxies to Rotate From</h3>
+        <table>
+            {% for table in tables %}
+            {{ table|safe }}
+            <td><button class="remove-button">Remove</button></td>
+            {% endfor %}
+        </table>
+        
+    </div>
+
+  
+
+</body>
+
+</html>
